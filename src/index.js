@@ -7,10 +7,13 @@ import AppRouter from "AppRouter";
 import * as serviceWorkerRegistration from "utils/serviceWorkerRegistration";
 import reportWebVitals from "utils/reportWebVitals";
 import "assets/styles/index.css";
+import "utils/firebase";
+import { DebugObserver } from "components/common";
 
 ReactDOM.render(
   <BrowserRouter>
     <RecoilRoot>
+      <DebugObserver />
       <AppRouter />
     </RecoilRoot>
   </BrowserRouter>,

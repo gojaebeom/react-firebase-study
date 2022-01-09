@@ -1,5 +1,4 @@
 import Home from "./Home";
-import Counter from "./Counter";
-import About from "./About";
+import Workspaces from "./Workspaces";
 
-export { Home, Counter, About };
+export { Home, Workspaces };

@@ -1,16 +1,33 @@
 import React from "react";
 import { useRoutes } from "react-router-dom";
 
-import { Home, About, Counter } from "pages";
+import { Home, Workspaces } from "pages";
+import { Loading, Private, Public } from "components/common";
+import { useLogin } from "core/hooks";
 
 function App() {
+  const { isLogin, refreshInit } = useLogin();
+
   const route = useRoutes([
-    { path: "/", element: <Home /> },
-    { path: "/about", element: <About /> },
-    { path: "/count", element: <Counter /> },
+    {
+      path: "/",
+      element: (
+        <Public restricted={true} isLogin={isLogin}>
+          <Home />
+        </Public>
+      ),
+    },
+    {
+      path: "/workspaces",
+      element: (
+        <Private isLogin={isLogin}>
+          <Workspaces />
+        </Private>
+      ),
+    },
   ]);
 
-  return route;
+  return <Loading isLoading={!refreshInit}>{route}</Loading>;
 }
 
 export default App;
